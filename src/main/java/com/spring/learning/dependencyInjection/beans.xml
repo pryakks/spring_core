@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="bike" class="com.spring.learning.dependencyInjection.Bike">
+		<property name="color" value="RED"></property>
+	</bean>
+	
+	<!-- to call using setter method
+		Bike bike = new Bike();
+		bike.setColor();
+	 -->
+
+	<!-- to call using constructor  -->
+	<bean id="car" class="com.spring.learning.dependencyInjection.Car">
+		<constructor-arg name="color" value="BLUE"></constructor-arg>
+	</bean>
+
+	<bean id="aeroplane" class="com.spring.learning.dependencyInjection.Aeroplane">
+		<constructor-arg name="engine">
+			<bean class="com.spring.learning.dependencyInjection.Engine"></bean>
+		</constructor-arg>
+	</bean>
+
+	<!-- 
+		<bean id="washingMachine" class="com.spring.learning.dependencyInjection.WashingMachine"> 
+			<constructor-arg name="appliance"> 
+				<bean class="com.spring.learning.dependencyInjection.Appliance"></bean> 
+			</constructor-arg> 
+		</bean> 
+		
+		<bean id="oven" class="com.spring.learning.dependencyInjection.Oven"> 
+			<constructor-arg name="appliance"> 
+				<bean class="com.spring.learning.dependencyInjection.Appliance"></bean> 
+			</constructor-arg> 
+		</bean> 
+	-->
+	
+	<bean id="appliance" class="com.spring.learning.dependencyInjection.Appliance"></bean>
+	
+	<bean id="washingMachine" class="com.spring.learning.dependencyInjection.WashingMachine">
+		<constructor-arg name="appliance" ref="appliance"></constructor-arg>
+	</bean>
+
+	<bean id="oven" class="com.spring.learning.dependencyInjection.Oven">
+		<constructor-arg name="appliance" ref="appliance"></constructor-arg>
+	</bean>
+</beans>

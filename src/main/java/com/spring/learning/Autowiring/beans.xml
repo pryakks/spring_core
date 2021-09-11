@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config></context:annotation-config>
+	<!-- by constructor check the name of object -->
+	<!-- 
+		<bean id="deptObj" class="com.spring.learning.Autowiring.HRDept"></bean> 
+		<bean id="company" class="com.spring.learning.Autowiring.Company" autowire="constructor" /> 
+	-->
+	
+	<!-- by name check the name of object. ByName first check type and then check name.
+	    for one bean there is no confusion 
+		first it checks by type in case on two beans. then it will have strict by name check
+	-->
+	
+	<!--	
+		<bean id="deptObj" class="com.spring.learning.Autowiring.HRDept"></bean>
+ 		<bean id="dept" class="com.spring.learning.Autowiring.HRDept"></bean>
+		<bean id="company" class="com.spring.learning.Autowiring.Company" autowire="byName" />
+	-->
+	
+	<!--	
+		<bean id="deptObj" class="com.spring.learning.Autowiring.HRDept"></bean>
+		<bean id="company" class="com.spring.learning.Autowiring.Company" autowire="byType" />
+	-->
+	
+	<!-- defaut is default property of auto wire it inject through ctor -->
+	
+<!-- 	<bean id="deptObj" class="com.spring.learning.Autowiring.HRDept"></bean> -->
+<!-- 	<bean id="company" class="com.spring.learning.Autowiring.Company" autowire="default" /> -->
+<!-- 	<bean id="company" class="com.spring.learning.Autowiring.Company" /> -->
+	
+	<bean id="deptObj" class="com.spring.learning.Autowiring.HRDept"></bean>
+ 	<bean id="deptHR" class="com.spring.learning.Autowiring.HRDept"></bean>
+ 	<bean id="deptIT" class="com.spring.learning.Autowiring.ITDept"></bean>
+ 	
+	<bean id="company" class="com.spring.learning.Autowiring.Company" />
+	
+	
+	<!-- <bean id="company" class="com.spring.learning.Autowiring.Company" /> -->
+
+</beans>
